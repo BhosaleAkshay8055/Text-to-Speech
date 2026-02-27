@@ -1,7 +1,8 @@
 const fs = require("fs");
 const axios = require("axios");
+require("dotenv").config();
 
-const API_KEY = "sk_c9597b673a610d3855145d5be8aa2fe06febb00d686de010";
+const API_KEY = process.env.API_KEY;
 const VOICE_ID = "EXAVITQu4vr4xnSDxMaL"; // example voice
 
 async function textToSpeech(text, index) {
