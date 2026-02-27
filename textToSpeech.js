@@ -3,7 +3,9 @@ const axios = require("axios");
 require("dotenv").config();
 
 const API_KEY = process.env.API_KEY;
-const VOICE_ID = "EXAVITQu4vr4xnSDxMaL"; // example voice
+const VOICE_ID = "EXAVITQu4vr4xnSDxMaL"; // example voice 
+// const VOICE_ID = "21m00Tcm4TlvDq8ikWAM"; // Rachel
+// const VOICE_ID = "pNInz6obpgDQGcFmaJgB"; // Adam
 
 async function textToSpeech(text, index) {
   const response = await axios({
@@ -17,10 +19,17 @@ async function textToSpeech(text, index) {
     data: {
       text: text,
       model_id: "eleven_multilingual_v2"
-    }
+    },
+    // realistic voice settings for Adam
+      voice_settings: {
+        stability: 0.30,
+        similarity_boost: 0.85,
+        style: 0.40,
+        use_speaker_boost: true
+      }
   });
 
-  fs.writeFileSync(`audio_${index}.mp3`, response.data);
+  fs.writeFileSync(`audio_R_0${index}.mp3`, response.data);
 }
 
 // ===== MAIN =====
